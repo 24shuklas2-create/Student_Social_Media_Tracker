@@ -932,10 +932,11 @@ function profileClass(p) { return p === 'Focused' ? 'focused' : p === 'Distracte
 // ── DASHBOARD ─────────────────────────────────────────────────────────────────
 async function loadDashboard() {
   try {
-    const [dash, risk, alerts] = await Promise.all([
-      fetch(`${API}/dashboard`).then(r=>r.json()),
-      fetch(`${API}/risk-monitor`).then(r=>r.json()),
-      fetch(`${API}/alerts`).then(r=>r.json()),
+    // Remove the API variable entirely from your fetch calls
+const [dash, risk, alerts] = await Promise.all([
+    fetch('/api/dashboard').then(r => r.json()),
+    fetch('/api/risk-monitor').then(r => r.json()),
+    fetch('/api/alerts').then(r => r.json()),
     ]);
 
     // KPI
