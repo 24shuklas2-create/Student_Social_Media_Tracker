@@ -486,5 +486,10 @@ def trends():
 if __name__ == "__main__":
     init_db()
     seed_demo_data()
-    print("🚀  ISPAS running at http://127.0.0.1:5000")
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    
+    # This checks for the PORT environment variable provided by Render
+    # If it's not found (like on your local PC), it defaults to 5000
+    port = int(os.environ.get("PORT", 5000))
+    
+    print(f"🚀 ISPAS running on port {port}")
+    app.run(host="0.0.0.0", port=port, debug=False)
