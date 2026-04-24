@@ -182,9 +182,7 @@ def generate_alerts(student_id, name, log):
 
 @app.route("/")
 def index():
-    html_path = os.path.join(os.path.dirname(__file__), "dashboard.html")
-    with open(html_path, encoding="utf-8") as f:
-        return f.read()
+    return render_template("dashboard.html")
 
 
 @app.route("/api/dashboard", methods=["GET"])
@@ -489,4 +487,4 @@ if __name__ == "__main__":
     init_db()
     seed_demo_data()
     print("🚀  ISPAS running at http://127.0.0.1:5000")
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=False)
